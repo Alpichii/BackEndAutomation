@@ -18,6 +18,8 @@ import utils.DataProviderUtils;
 
 import java.util.Collections;
 
+import static utils.ApiUtils.serializePOJO;
+
 
 public class PetsAPIWithLombokAndDataProvider {
 
@@ -61,7 +63,7 @@ public class PetsAPIWithLombokAndDataProvider {
 
         response = RestAssured.given().log().all()
                 .contentType(ContentType.JSON)
-                .body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(createPet))
+                .body(serializePOJO(createPet))
                 .post("/v2/pet")
                 .then().log().all().assertThat().statusCode(200)
                 .extract().response();
