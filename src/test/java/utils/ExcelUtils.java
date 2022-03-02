@@ -81,6 +81,25 @@ public class ExcelUtils {
         return allValues;
     }
 
+    public static List<List<String>> getValues(String testMethodName) {
+        List<List<String>> allValues = new ArrayList<>();
+        for (int i = sheet.getFirstRowNum()+1; i <= sheet.getLastRowNum(); i++) {
+            row = sheet.getRow(i);
+            List<String> values = new ArrayList<>();
+            for (int j = row.getFirstCellNum()+1; j < row.getLastCellNum(); j++) {
+                cell = row.getCell(j);
+                cell.setCellType(CellType.STRING);
+                if(row.getCell(row.getFirstCellNum()).toString().equals(testMethodName)){
+                    values.add((cell.toString()));
+                }
+            }
+            if(!values.isEmpty()) {
+                allValues.add(values);
+            }
+        }
+        return allValues;
+    }
+
     public static String[][] getExcelData(List<List<String>> mergedList) {
         String[][] result = new String[mergedList.size()][];
         for (int i = 0; i < mergedList.size(); i++) {
