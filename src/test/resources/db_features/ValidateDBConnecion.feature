@@ -1,3 +1,4 @@
+@db
 Feature: As a QE, validating that I can connect to database
 
  Background: Connecting the database

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import lombok.Data;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -13,7 +12,7 @@ import pojo_classes.users.CreateUserWithLombok;
 
 import static org.hamcrest.Matchers.equalTo;
 
-@Data
+
 public class GoRestWithLombok {
 
     Faker faker = new Faker();
@@ -48,7 +47,8 @@ public class GoRestWithLombok {
 
 // Using following syntax when you need to assign the value in the class
 // where you perform the automation
-        CreateUserWithLombok createUserWithLombok = CreateUserWithLombok.builder().name("Tech Global").gender("female").build();
+        CreateUserWithLombok createUserWithLombok = CreateUserWithLombok
+                .builder().name("Tech Global").gender("female").build();
         System.out.println("My request body: " + createUserWithLombok);
 
         // created new user with using POJO class

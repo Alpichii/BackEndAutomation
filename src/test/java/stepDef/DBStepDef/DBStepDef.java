@@ -1,4 +1,4 @@
-package stepDef;
+package stepDef.DBStepDef;
 
 import io.cucumber.java.en.Given;
 import org.apache.logging.log4j.LogManager;
